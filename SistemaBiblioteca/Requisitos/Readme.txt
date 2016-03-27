@@ -1,11 +1,9 @@
-> Deixa a parte de testes pra depois
-
 - Hierarquia de menu:
 - Livro:
 	- Cadastrar Livro
 	- Modificar Livro
 	- Listar livros
-		- Por t√≠tulo
+		- Por tÌtulo
 		- Por editora
 		- Por autores
 
@@ -20,24 +18,24 @@
 	- Modificar
 	- Buscar
 
-- Empr√©stimo:
-	- Cadastrar empr√©stimo
-	- Devolu√ß√£o
+- EmprÈstimo:
+	- Cadastrar emprÈstimo
+	- DevoluÁ„o
 
 - Busca: 
 	- Busca de Livro
 		- Por autor
-		- Por t√≠tulo
+		- Por tÌtulo
 		- Por categoria
 		- Por editora
 		- ...
 
 - Listar:
 	- Emprestimos Vigentes
-	- Hist√≥rico de emprestimos
+	- HistÛrico de emprestimos
 	- Livros(?)
 
 
 ///////////
 
-- Teoricamente d√° pra fazer sem criar a parte de funcion√°rio de boa
+- Teoricamente d· pra fazer sem criar a parte de funcion·rio de boa

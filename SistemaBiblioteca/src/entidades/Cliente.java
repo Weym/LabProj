@@ -2,17 +2,21 @@ package entidades;
 
 public class Cliente {
 	private String nome;
+	private char sexo;
 	private int idade;
+	private String endereco;
+	private int telefone;
 	private int cpf;
 	private String email;
-	private String endereco;
 	
-	public Cliente ( String nome, int idade, int cpf, String email, String endereco){
+	public Cliente ( String nome, char sexo, int idade, String endereco, int telefone, int cpf, String email){
 		this.setNome(nome);
+		this.setSexo(sexo);
 		this.setIdade(idade);
+		this.setEndereco(endereco);
+		this.setTelefone(telefone);
 		this.setCpf(cpf);
 		this.setEmail(email);
-		this.setEndereco(endereco);
 	}
 
 	public String getNome() {
@@ -23,6 +27,14 @@ public class Cliente {
 		this.nome = nome;
 	}
 
+	public char getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(char sexo) {
+		this.sexo = sexo;
+	}
+
 	public int getIdade() {
 		return idade;
 	}
@@ -31,6 +43,22 @@ public class Cliente {
 		this.idade = idade;
 	}
 
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public int getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(int telefone) {
+		this.telefone = telefone;
+	}
+	
 	public int getCpf() {
 		return cpf;
 	}
@@ -47,11 +75,4 @@ public class Cliente {
 		this.email = email;
 	}
 	
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
 }
