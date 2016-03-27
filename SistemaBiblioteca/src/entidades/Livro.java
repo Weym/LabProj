@@ -1,42 +1,62 @@
 package entidades;
 
 public class Livro {
-	private String nome;
+	private String titulo;
+	private int anoPublicacao;
+	private int edicao;
+	private int volume;
 	private Autor autor;
-	private String descricao;
 	private String categoria;
 	private int numeroPaginas;
 	
-	public Livro (String nome, Autor autor, String descricao, String categoria, int numeroPaginas){
-		this.nome = nome;
-		this.autor = autor;
-		this.descricao = descricao;
-		this.categoria = categoria;
-		this.numeroPaginas = numeroPaginas;
+	public Livro (String titulo, int anoPublicacao, int edicao, int volume, Autor autor, String descricao, String categoria, int numeroPaginas){
+		this.setTitulo(titulo);
+		this.setAnoPublicacao(anoPublicacao);
+		this.setEdicao(edicao);
+		this.setVolume(volume);
+		this.setAutor(autor);
+		this.setCategoria(categoria);
+		this.setNumeroPaginas(numeroPaginas);
 	}
 	
-	public String getNome(){
-		return nome;
+	public String getTitulo(){
+		return titulo;
 	}
 	
-	public void setNome(String nome){
-		this.nome = nome;
+	public void setTitulo(String titulo){
+		this.titulo = titulo;
 	}
 	
+	public int getAnoPublicacao() {
+		return anoPublicacao;
+	}
+
+	public void setAnoPublicacao(int anoPublicacao) {
+		this.anoPublicacao = anoPublicacao;
+	}
+
+	public int getEdicao() {
+		return edicao;
+	}
+
+	public void setEdicao(int edicao) {
+		this.edicao = edicao;
+	}
+
+	public int getVolume() {
+		return volume;
+	}
+
+	public void setVolume(int volume) {
+		this.volume = volume;
+	}
+
 	public Autor getAutor(){
 		return autor;
 	}
 	
 	public void setAutor(Autor autor){
 		this.autor = autor;
-	}
-	
-	public String getDescricao(){
-		return descricao;
-	}
-	
-	public void setDescricao(String descricao){
-		this.descricao = descricao;
 	}
 	
 	public String getCategoria(){
