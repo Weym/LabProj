@@ -1,19 +1,33 @@
 package entidades;
 
-public class Livro {
+import java.io.Serializable;
+
+public class Livro implements Serializable{
 	private String titulo;
+	private Autor autor;
+	//private String editora;
+	private int numeroPaginas;
 	private int anoPublicacao;
 	private int edicao;
-	private int volume;
-	private Autor autor;
 	private String categoria;
-	private int numeroPaginas;
+	private int exemplares;
 	
-	public Livro (String titulo, int anoPublicacao, int edicao, int volume, Autor autor, String descricao, String categoria, int numeroPaginas){
+	public Livro(){
+		
+	}
+	
+	public Livro(String titulo, int numeroPaginas, int exemplares, Autor autor){
+		this.setTitulo(titulo);
+		this.setNumeroPaginas(numeroPaginas);
+		this.setExemplares(exemplares);
+		this.setAutor(autor);
+		
+	}
+	
+	public Livro (String titulo, int anoPublicacao, int edicao, Autor autor, String categoria, int numeroPaginas){
 		this.setTitulo(titulo);
 		this.setAnoPublicacao(anoPublicacao);
-		this.setEdicao(edicao);
-		this.setVolume(volume);
+		this.setedicao(edicao);
 		this.setAutor(autor);
 		this.setCategoria(categoria);
 		this.setNumeroPaginas(numeroPaginas);
@@ -35,26 +49,18 @@ public class Livro {
 		this.anoPublicacao = anoPublicacao;
 	}
 
-	public int getEdicao() {
+	public int getedicao() {
 		return edicao;
 	}
 
-	public void setEdicao(int edicao) {
+	public void setedicao(int edicao) {
 		this.edicao = edicao;
-	}
-
-	public int getVolume() {
-		return volume;
-	}
-
-	public void setVolume(int volume) {
-		this.volume = volume;
 	}
 
 	public Autor getAutor(){
 		return autor;
 	}
-	
+
 	public void setAutor(Autor autor){
 		this.autor = autor;
 	}
@@ -73,5 +79,17 @@ public class Livro {
 	
 	public void setNumeroPaginas(int numeroPaginas){
 		this.numeroPaginas = numeroPaginas;
+	}
+
+	public int getExemplares() {
+		return exemplares;
+	}
+
+	public void setExemplares(int exemplares) {
+		this.exemplares = exemplares;
+	}
+	
+	public String toString(){
+		return "Título: " + titulo + ", " + numeroPaginas + "p, " + " exemplares: " +  exemplares + ", " + autor;
 	}
 }
