@@ -1,15 +1,17 @@
 package entidades;
 
-public class Cliente {
+import java.io.Serializable;
+
+public class Cliente implements Serializable {
 	private String nome;
 	private char sexo;
 	private int idade;
 	private String endereco;
 	private int telefone;
-	private int cpf;
+	private String cpf;
 	private String email;
 	
-	public Cliente ( String nome, char sexo, int idade, String endereco, int telefone, int cpf, String email){
+	public Cliente ( String nome, char sexo, int idade, String endereco, int telefone, String cpf, String email){
 		this.setNome(nome);
 		this.setSexo(sexo);
 		this.setIdade(idade);
@@ -19,6 +21,7 @@ public class Cliente {
 		this.setEmail(email);
 	}
 
+	
 	public String getNome() {
 		return nome;
 	}
@@ -59,12 +62,12 @@ public class Cliente {
 		this.telefone = telefone;
 	}
 	
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(int cpf) {
-		this.cpf = cpf;
+	public void setCpf(String cpf2) {
+		this.cpf = cpf2;
 	}
 
 	public String getEmail() {

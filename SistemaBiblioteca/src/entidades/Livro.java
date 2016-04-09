@@ -3,6 +3,10 @@ package entidades;
 import java.io.Serializable;
 
 public class Livro implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8879357926558563867L;
 	private String titulo;
 	private Autor autor;
 	//private String editora;
@@ -90,6 +94,6 @@ public class Livro implements Serializable{
 	}
 	
 	public String toString(){
-		return "Título: " + titulo + ", " + numeroPaginas + "p, " + " exemplares: " +  exemplares + ", " + autor;
+		return "Título: " + titulo + ", " + numeroPaginas + "p, " + "exemplares: " +  exemplares + ", " + autor;
 	}
 }

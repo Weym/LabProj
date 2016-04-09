@@ -1,10 +1,16 @@
 package entidades;
 
-public class Autor {
-	private String nome;
-	private Livro livro;
+import java.io.Serializable;
 
-	public Autor (String nome, Livro livro){
+public class Autor implements Serializable {
+	private String nome;
+	private String livro;
+
+	public Autor (String nome){
+		this.setNome(nome);
+	}
+	
+	public Autor (String nome, String livro){
 		this.setNome(nome);
 		this.setLivro(livro);
 	}
@@ -17,11 +23,15 @@ public class Autor {
 		this.nome = nome;
 	}
 
-	public Livro getLivro() {
+	public String getLivro() {
 		return livro;
 	}
 
-	public void setLivro(Livro livro) {
+	public void setLivro(String livro) {
 		this.livro = livro;
+	}
+	
+	public String toString(){
+		return nome;
 	}
 }

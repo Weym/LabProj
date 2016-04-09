@@ -1,57 +1,88 @@
-import java.text.ParseException;
+package negocio;
 
-import javax.swing.text.MaskFormatter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class Utils {
-	String cpf;
-
-	public static boolean isCpf(String valor) {
-		boolean retorno = valor.matches("\\d{11}");
-
-		if (retorno == false) {
-
-			System.out.println("Formato do CPF inválido, informe apenas números e 11 digitos.");
+	
+	public static String validarCpf(String cpf) {
+		if (cpf==null || cpf.equalsIgnoreCase("")|| cpf.equalsIgnoreCase("(null)") || cpf.equalsIgnoreCase("null")) 
+ {
+			return "CPF Inválido.";
+		} else {
+			String NumCPF = "";
+			for (int i = 0; i < cpf.length(); i++) {
+				if (Character.isDigit(cpf.charAt(i)))
+					NumCPF = NumCPF + cpf.substring(i, i + 1);
+			}
+			if (NumCPF.length() > 11 || NumCPF.length() < 6) {
+				return "CPF Inválido";
+			}
+			while (NumCPF.length() < 11) {
+				NumCPF = "0" + NumCPF;
+			}
+			int soma = 0, primDig = 0, segDig = 0;
+			String compara = NumCPF;
+			String A = NumCPF.substring(0, 3);
+			String B = NumCPF.substring(3, 6);
+			String C = NumCPF.substring(6, 9);
+			String D = NumCPF.substring(9, 11);
+			for (int i = 1; i <= 9; i++) {
+				soma += i * Integer.parseInt(NumCPF.substring(i - 1, i));
+			}
+			primDig = (soma % 11);
+			if (primDig >= 10) {
+				primDig = 0;
+			}
+			NumCPF = NumCPF.substring(0, 9) + String.valueOf(primDig);
+			for (int j = 1; j <= 9; j++) {
+				soma += j * Integer.parseInt(NumCPF.substring(j - 1, j + 1));
+			}
+			segDig = (soma % 11);
+			if (segDig >= 10) {
+				segDig = 0;
+			}
+			NumCPF = NumCPF + String.valueOf(segDig);
+			if (compara.equalsIgnoreCase(NumCPF)) {
+				return A + "." + B + "." + C + "-" + D;
+			}
+			return "Digito Verificador da base é Inválido";
 		}
-		return retorno;
 	}
 	
-	public static boolean isCEP(String valor){
-		boolean retorno = valor.matches("\\d{8}");
-		
-		if (retorno == false){
-			System.out.println("Formato do CEP inválido, informe apenas números e 8 dígitos.");
-		}
-		return retorno;
-	}
-	
-	public static String formatarCEP(String cep){
-		if (isCEP(cep)){
-			String c1 = cep.substring(0, 5);
-			String c2 = cep.substring(5, 8);
-			
-			cep = String.format("%s-%s", c1, c2);
-			return cep;
-		}
-		
-		else{
-			return null;
-		}
-	}
-	
-	public static String formatarCPF(String cpf){
-		if (isCpf(cpf)){
-		String c1 = cpf.substring(0, 3);
-		String c2 = cpf.substring(3, 6);
-		String c3 = cpf.substring(6, 9);
-		String c4 = cpf.substring(9, 11);
-		cpf = String.format("%s.%s.%s-%s", c1, c2, c3, c4);
-		return cpf;
-	}
-		else{
-			return null;
-		}
-	}
+	   public static void salvar(Object objeto, String caminho) {
+		   
+           try {
+             FileOutputStream saveFile = new FileOutputStream(caminho);
+             ObjectOutputStream stream = new ObjectOutputStream(saveFile);
+ 
+              // salva o objeto
+             stream.writeObject(objeto);
+ 
+             stream.close();
+           } catch (Exception exc) {
+             exc.printStackTrace();
+           }
+    }
+	   
+       public static Object restaurar(String caminho) {
+    	   
+           Object objeto = null;
+          
+           try {
+                  FileInputStream restFile = new FileInputStream(caminho);
+                  ObjectInputStream stream = new ObjectInputStream(restFile);
 
-	public Utils(int cep) {
-	}
+                  // recupera o objeto
+                  objeto = stream.readObject();
+
+                  stream.close();
+           } catch (Exception e) {
+                  e.printStackTrace();
+           }
+
+           return objeto;
+    }
 }

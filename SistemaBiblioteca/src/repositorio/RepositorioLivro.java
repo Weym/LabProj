@@ -9,7 +9,7 @@ public class RepositorioLivro {
 
 	List<Livro> listaLivros = new ArrayList<Livro>();
 
-	public boolean salvaLivro(Livro livro) {
+	public boolean salvarLivro(Livro livro) {
 
 		try {
 
@@ -21,7 +21,13 @@ public class RepositorioLivro {
 
 		return true;
 	}
-/*
+
+
+	public List<Livro> listarLivros() {
+		// TODO Auto-generated method stub
+		return this.listaLivros;
+	}
+	/*
 	public boolean deletarPessoaPorID(long id) {
 
 		for (Livro livro : listaLivros) {
@@ -31,11 +37,6 @@ public class RepositorioLivro {
 		}
 
 		return false;
-	}
-
-	public List<Livro> listarPessoa() {
-		// TODO Auto-generated method stub
-		return this.listaLivro;
 	}
 
 	public boolean alteraLivro(Livro livro) {

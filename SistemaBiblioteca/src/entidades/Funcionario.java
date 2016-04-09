@@ -1,14 +1,27 @@
 package entidades;
 
-public class Funcionario {
+import java.io.Serializable;
+
+public class Funcionario implements Serializable{
 	private String nome;
 	private int idade;
-	private int cpf;
+	private String cpf;
+	private String senha;
 	
-	public Funcionario (String nome, int idade, int cpf){
+	public Funcionario (String nome, int idade, String cpf, String senha){
 		this.nome = nome;
 		this.idade = idade;
 		this.cpf = cpf;
+		this.senha = senha;
+	}
+	
+	public String getSenha(){
+		return senha;
+	}
+	
+	public void setSenha(String senha){
+		this.senha = senha;
+		
 	}
 	
 	public String getNome(){
@@ -27,11 +40,11 @@ public class Funcionario {
 		this.idade = idade;
 	}
 	
-	public int getCpf(){
+	public String getCpf(){
 		return cpf;
 	}
 	
-	public void setCpf(int cpf){
+	public void setCpf(String cpf){
 		this.cpf = cpf;
 	}
 }
