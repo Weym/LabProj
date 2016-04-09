@@ -15,8 +15,8 @@ Cadastro de autores (decidir como fazer.. do jeito pensado antes não funciona, 
 
 
 Problemas a resolver:
-Quando tenta salvar o arquivo sem a pastar estar criada, dá erro.
-Quando sai do módulo, ele "trava", não retorna ao menu principal.. provavelmente é usando Switch Case no main pra resolver isso, ao invés do do while
+- Quando tenta salvar o arquivo sem a pastar estar criada, dá erro.
+- Quando sai do módulo, ele "trava", não retorna ao menu principal.. provavelmente é usando Switch Case no main pra resolver isso, ao invés do do while
 
 
 
