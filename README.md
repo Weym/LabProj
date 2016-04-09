@@ -11,12 +11,19 @@ Fazer o empréstimo dos livros
 	- Quando o livro tiver sido empreste a alguém, 1 unidade vai ser removida dos exemplares
 	- Fazer o prazo, atraso, etc
 
-Cadastro de autores (decidir como fazer.. do jeito pensado antes não funciona, pq ele ta sendo cadastrado como String no livro, e de todo jeito teria que criar um arquivo novo, num diretório só para autores)
+Cadastro de autores 
+- Como fazer o cadastro de autores? Do jeito que tá.. o livro tá sendo criado pegando Autor como String, fiz assim pq só tava terminando a parte do livro, sem conectar tudo
+- E a criação dos arquivos tá individual (pra cada livro cadastrado, cria-se um arquivo)
+- Possiveis problemas de quando criar o autor:
+- 	Ele vai listar os livros? (se ele tiver escrito mais de 1)
+- 	Se cadastrar o autor quando tiver criando o livro.. e tentar cadastrar em outro, vai bugar
+- 	é só "food for thought", se for fazer, faz do jeito que tu achar certo ae
 
 
 Problemas a resolver:
 - Quando tenta salvar o arquivo sem a pastar estar criada, dá erro.
-- Quando sai do módulo, ele "trava", não retorna ao menu principal.. provavelmente é usando Switch Case no main pra resolver isso, ao invés do do while
+- Mudar os diretórios da manipulação dos arquivos, organizar em pastas dentro da WorkPlace, mas sem ter que ficar escrevendo o caminho todo "C://etc", pq quando mudar o projeto de pc não precisa ficar modificando isso
+- Quando sai do módulo, ele "trava", não retorna ao menu principal.. provavelmente é usando Switch Case no main pra resolver isso, ao invés do do while (saporra faz depois que terminar tudo, não é requisito)
 
 
 
