@@ -1,5 +1,5 @@
 
-
+//essa merda zuo a formatação do bloco de notas 
 OBS:
 - O que caralho fica no pacote de negócios? as "regras dos negócios" tá.. dafuq é isso? os bagulhos de emprestar e tal?
 tem que mudar os diretórios dos arquivos na classe DadosLivro
