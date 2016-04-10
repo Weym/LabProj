@@ -33,31 +33,84 @@ public class DadosLivro {
  }
 	
 	public static void modificar(String caminho){
+		
+		
+		buscar(caminho);
+		
+		Livro livro = new Livro();
+		livro = (Livro) buscar(caminho);
 		String titulo;
+		int numeroPaginas;
+		int exemplares;
+		Autor autor;
+		
+		
+		titulo = livro.getTitulo();
+		numeroPaginas = livro.getNumeroPaginas();
+		exemplares = livro.getExemplares();
+		autor = livro.getAutor();
+		
+		String novoTitulo;
+		int novoNumeroPaginas, novoExemplares;
+		Autor novoAutor;
 		
 		buscar(caminho);
 		Scanner sc = new Scanner(System.in);
+		
+		do {
+			String opcao;
+			System.out.println();
+		System.out.println("Qual informação deseja modificar?");
+		System.out.println("[1] Título");
+		System.out.println("[2] Número de Páginas");
+		System.out.println("[3] Quantidade de exemplares");
+		System.out.println("[4] Autor");
+		opcao = sc.next();
+		
+		if (opcao.equalsIgnoreCase("Sair")){
+			return;
+		}
+			
+		if (opcao.equalsIgnoreCase("1")){
+			System.out.println("[1] Título ");
+			livro.getTitulo();
+			titulo = sc.nextLine();
+		}
+		
+
+		else if (opcao.equalsIgnoreCase("2")){
+			System.out.println("[2] úmero de Páginas ");
+			numeroPaginas = sc.nextInt();
+			//validar só números, evitar dar excessão
+		}
+
+		else if (opcao.equalsIgnoreCase("3")){
+			System.out.println("[3] Quantidade de exemplares");
+			exemplares = sc.nextInt();
+			//same
+		}
+
+		else if (opcao.equalsIgnoreCase("4")){
+			System.out.println("[4] Autor do livro");
+			String autorNome = sc.next();
+			autor = new Autor(autorNome);
+		}
+		
+		else {
+			System.out.println("Opções válidas de [1] a [4], se quiser voltar digite \"Sair\"");
+		}
+
+		
 		System.out.println("Digite as novas informações do livro ");
-		System.out.println("Título ");
-		titulo = sc.nextLine();
 		
-		System.out.println("Número de Páginas ");
-		int numeroPaginas = sc.nextInt();
-		//validar só números, evitar dar excessão
-		
-		System.out.println("Quantidade de exemplares");
-		int exemplares = sc.nextInt();
-		//same
-		
-		System.out.println("Autor do livro");
-		String autorNome = sc.next();
-		Autor autor = new Autor(autorNome);
-		
-		Livro livro = new Livro(titulo, numeroPaginas, exemplares, autor);
+		livro = new Livro(titulo, numeroPaginas, exemplares, autor);
+		System.out.println("Os dados do livro ficaram: ");
+		System.out.println("Título: " + titulo + "\nNúmero de páginas: " +numeroPaginas + "\nExemplares: " + exemplares + "Autor: " +autor);
 
 		remover(caminho);
 		salvar(livro, titulo + ".txt");
-
+		}
+		while (true);
 	}
     
     public static void salvar(Object objeto, String caminho) {
@@ -108,5 +161,7 @@ public class DadosLivro {
     		}
     	   
     	}
+	
+
 	
 }
