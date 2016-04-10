@@ -23,7 +23,7 @@ Dos requisitos, tem feito:
 	- 1.5 vem de modularização/organização do codigo
 
 
-
+Eu tô terminando o CRUD do Cliente, o do autor precisa do primeiro bagulho lá tbm :p
 
 
 
