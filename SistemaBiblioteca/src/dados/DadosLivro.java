@@ -3,22 +3,16 @@ package dados;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.nio.file.DirectoryNotEmptyException;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
+import java.util.Scanner;
 
+import entidades.Autor;
 import entidades.Livro;
 
 public class DadosLivro {
-	//static String PASTA = "Livros/";
-	//static String EXTENSAO = ".txt";
-
 	
-	public static Object restaurar(String caminho) {
+	public static Object buscar(String caminho) {
 	   	 
         Object objeto = null;
    	 	String dir = "C:/Users/Weydson/Desktop/workplace/SistemaBiblioteca/Livros/"+caminho;
@@ -30,7 +24,6 @@ public class DadosLivro {
 
                // recupera o objeto
                objeto = stream.readObject();
-
                stream.close();
         } catch (Exception e) {
                e.printStackTrace();
@@ -40,10 +33,30 @@ public class DadosLivro {
  }
 	
 	public static void modificar(String caminho){
-		String dir = "C:/Users/Weydson/Desktop/workplace/SistemaBiblioteca/Livros/"+caminho;
-		System.out.println("Livro selecionado: " + restaurar(dir));
+		String titulo;
 		
+		buscar(caminho);
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Digite as novas informações do livro ");
+		System.out.println("Título ");
+		titulo = sc.nextLine();
 		
+		System.out.println("Número de Páginas ");
+		int numeroPaginas = sc.nextInt();
+		//validar só números, evitar dar excessão
+		
+		System.out.println("Quantidade de exemplares");
+		int exemplares = sc.nextInt();
+		//same
+		
+		System.out.println("Autor do livro");
+		String autorNome = sc.next();
+		Autor autor = new Autor(autorNome);
+		
+		Livro livro = new Livro(titulo, numeroPaginas, exemplares, autor);
+
+		remover(caminho);
+		salvar(livro, titulo + ".txt");
 
 	}
     
@@ -64,7 +77,6 @@ public class DadosLivro {
         }
     				
  }
-
 	
 	public static void listarArquivos() {
 		
@@ -75,7 +87,7 @@ public class DadosLivro {
 			System.out.println("Número de livros no catalogo: " + afile.length ); 
 			for (int j = afile.length; i < j; i++) {
 				File arquivos = afile[i];
-				System.out.println(restaurar(arquivos.getName()));
+				System.out.println(buscar(arquivos.getName()));
 				}
 			}
 	
@@ -84,17 +96,17 @@ public class DadosLivro {
 		
 	    String arquivo = "C:/Users/Weydson/Desktop/workplace/SistemaBiblioteca/Livros/" + livro;
 	    
-		
-	
     		System.out.println(arquivo);
 		    File file = new File(arquivo);
     		if(file.delete()){
-    			System.out.println(file.getName() + " foi removido!");
+    			String MsgSaida;
+    			MsgSaida = file.getName();
+    			MsgSaida = MsgSaida.replaceAll(".txt", "");
+    			System.out.println("Operação realizada com sucesso no livro " + MsgSaida + ".");
     		}else{
-    			System.out.println("A operação de remover falhou!");
+    			System.out.println("Este livro não existe!");
     		}
     	   
     	}
-	}
 	
-
+}
