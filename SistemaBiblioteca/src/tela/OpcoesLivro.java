@@ -5,17 +5,14 @@ import entidades.Livro;
 import dados.DadosLivro;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-import repositorio.RepositorioLivro;
 public class OpcoesLivro {
 
-	static RepositorioLivro rp = new RepositorioLivro();
 	
 	//Colocar ID nos livros/usuários? se bem que livro pode usar o ISBN.
 	
-	public static void cadastrar(){
+	public static void apresentacao(){
 		String titulo;
 		String opcao;
 		int numeroPaginas;
@@ -33,21 +30,21 @@ public class OpcoesLivro {
 		
 		do {
 			System.out.println("Opções do módulo Livro:");
-			System.out.println("1. Cadastrar novo livro");
-			System.out.println("2. Modificar livro existente");
-			System.out.println("3. Buscar livro");
-			System.out.println("4. Remover");
-			System.out.println("5. Listar livros (posição temporária)");
+			System.out.println("[1] Cadastrar novo livro");
+			System.out.println("[2] Modificar livro existente");
+			System.out.println("[3] Buscar livro");
+			System.out.println("[4] Remover");
+			System.out.println("[5] Listar livros (posição temporária)");
 			opcao = sc.next();
 
 
 			if (opcao.equalsIgnoreCase("1")){
 				System.out.println("Entre com os dados do livro ");
 				System.out.println("Título ");
-				titulo = sc.next();
-				//permitir salvar com mais de um nome, dando espaço e blabla.. validar o nome
+				sc.nextLine();
+				titulo = sc.nextLine();
 				//validar cadastro duplicado (mais avançado: em caso de duplicada
-				//perguntar se quer adicionar a quantidade que tentou cadastrar ou cancelar o cadastro
+				//perguntar se quer adicionar a quantidade (?) que tentou cadastrar ou cancelar o cadastro
 				
 				System.out.println("Número de Páginas ");
 				numeroPaginas = sc.nextInt();
@@ -62,29 +59,24 @@ public class OpcoesLivro {
 				//validar nome, pensar em pedir sobre nome separado ou colocar junto tbm
 				
 				Autor autor = new Autor(autorNome);
-				Livro livro = new Livro(titulo,  numeroPaginas, exemplares, autor);
-				rp.salvarLivro(livro);
+				Livro livro = new Livro(titulo, numeroPaginas, exemplares, autor);
 				DadosLivro.salvar(livro, titulo + ".txt");
 			}
 			
 			else if (opcao.equalsIgnoreCase("2")){
-				System.out.println("Digite o nome que deseja alterar: ");
-				String busca = sc.next();
-				for (int i = 0; i < lista.size(); i++){
-					if (busca.equalsIgnoreCase(lista.get(i).getTitulo())){
-						System.out.println(lista.get(i).getTitulo());
-					}	
-					else {
-						System.out.println("ERRO. Não existe livro com este nome.");
-					}
-				}
+				System.out.println("Digite o nome do livro que deseja modificar: ");
+				sc.nextLine();
+				String busca = sc.nextLine();
+				DadosLivro.modificar(busca + ".txt");
+				
 			}
 			
 			else if (opcao.equalsIgnoreCase("3")){
 				System.out.println("Digite o nome do livro que deseja buscar");
-				String livroBuscar = sc.next();
+				String livroBuscar = sc.nextLine();
+				livroBuscar = sc.nextLine();
 				livroBuscar+=".txt";
-				System.out.println(DadosLivro.restaurar(livroBuscar));
+				System.out.println(DadosLivro.buscar(livroBuscar));
 				System.out.println();
 			}
 			
@@ -93,6 +85,7 @@ public class OpcoesLivro {
 				String livroRemover = sc.next();
 				livroRemover+=".txt";
 				DadosLivro.remover(livroRemover);
+				
 			}
 			
 			else if (opcao.equalsIgnoreCase("5")){
