@@ -5,9 +5,9 @@ Prioridades:
 	- O usuário pega um livro, isso diminui 1 da quantidade de exemplares, blabla.
 
 	
-^ com isso aí já tem algo apresentável
+^ com isso aí já tem algo apresentável.
 
-Dos requisitos, tem feito:
+Dos requisitos, tem feito:\n
 	- CRUD, uma funcionalidade além do CRUD (Listar, buscar);
 	- Menu interativo;
 	- Encapsulamento
