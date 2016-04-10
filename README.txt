@@ -1,10 +1,11 @@
 Prioridades:
-1 - Retornar informações individuais dos arvquivos (getTitulo, sasporra, e sim, to apanhando com isso)
+1 - Retornar informações individuais dos arvquivos (getTitulo, sasporra, e sim, to apanhando com isso) < ja fiz
 
-2 - Sistema de empréstimo básico:
-	- O usuário pega um livro, isso diminui 1 da quantidade de exemplares, blabla.
+2 - Sistema de empréstimo básico (feito pela entidade Biblioteca):
+	- O usuário pega um livro, isso diminui 1 da quantidade de exemplares, validações, blabla.
 
-	
+3 - Rodar o sistema e procura onde tá os erros dele, e o que falta (rodando, não fuçando o código)
+
 ^ com isso aí já tem algo apresentável.
 
 Dos requisitos, tem feito:
