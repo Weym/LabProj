@@ -7,7 +7,7 @@ Prioridades:
 	
 ^ com isso aí já tem algo apresentável.
 
-Dos requisitos, tem feito:\n
+Dos requisitos, tem feito:
 	- CRUD, uma funcionalidade além do CRUD (Listar, buscar);
 	- Menu interativo;
 	- Encapsulamento
