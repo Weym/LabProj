@@ -1,3 +1,38 @@
+Prioridades:
+1 - Retornar informações individuais dos arvquivos (getTitulo, sasporra, e sim, to apanhando com isso)
+
+2 - Sistema de empréstimo básico:
+	- O usuário pega um livro, isso diminui 1 da quantidade de exemplares, blabla.
+
+	
+^ com isso aí já tem algo apresentável
+
+Dos requisitos, tem feito:
+	- CRUD, uma funcionalidade além do CRUD (Listar, buscar);
+	- Menu interativo;
+	- Encapsulamento
+	- Construtores
+	- Organizado em pacotes
+	- Fácil de fazer:
+		- Documentação
+	- Falta:
+		- Quatro entidades (falta uma, que era pra ser de biblioteca com o sistema de empréstimo e pa)
+		- Duas validações de regras de negócio (pra fazer essa precisa do primeiro bagulho das prioridades)
+	- Ponto total com isso aí: 6x7 = 4.2
+	- +1.5 da definição das classes, atributos e métodos
+	- 1.5 vem de modularização/organização do codigo
+
+
+
+
+
+
+
+-----------------------------------------------
+-----------------------------------------------
+
+
+
 
 //essa merda zuo a formatação do bloco de notas 
 OBS:
