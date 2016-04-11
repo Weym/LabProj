@@ -2,48 +2,51 @@ package negocio;
 
 public class Utils {
 	
-	public static String validarCpf(String cpf) {
-		if (cpf==null || cpf.equalsIgnoreCase("")|| cpf.equalsIgnoreCase("(null)") || cpf.equalsIgnoreCase("null")) 
- {
-			return "CPF Inválido.";
-		} else {
-			String NumCPF = "";
-			for (int i = 0; i < cpf.length(); i++) {
-				if (Character.isDigit(cpf.charAt(i)))
-					NumCPF = NumCPF + cpf.substring(i, i + 1);
-			}
-			if (NumCPF.length() > 11 || NumCPF.length() < 6) {
-				return "CPF Inválido";
-			}
-			while (NumCPF.length() < 11) {
-				NumCPF = "0" + NumCPF;
-			}
-			int soma = 0, primDig = 0, segDig = 0;
-			String compara = NumCPF;
-			String A = NumCPF.substring(0, 3);
-			String B = NumCPF.substring(3, 6);
-			String C = NumCPF.substring(6, 9);
-			String D = NumCPF.substring(9, 11);
-			for (int i = 1; i <= 9; i++) {
-				soma += i * Integer.parseInt(NumCPF.substring(i - 1, i));
-			}
-			primDig = (soma % 11);
-			if (primDig >= 10) {
-				primDig = 0;
-			}
-			NumCPF = NumCPF.substring(0, 9) + String.valueOf(primDig);
-			for (int j = 1; j <= 9; j++) {
-				soma += j * Integer.parseInt(NumCPF.substring(j - 1, j + 1));
-			}
-			segDig = (soma % 11);
-			if (segDig >= 10) {
-				segDig = 0;
-			}
-			NumCPF = NumCPF + String.valueOf(segDig);
-			if (compara.equalsIgnoreCase(NumCPF)) {
-				return A + "." + B + "." + C + "-" + D;
-			}
-			return "Digito Verificador da base é Inválido";
+	public static boolean validarCpf(String valor) {
+		boolean retorno = valor.matches("\\d{11}");
+
+		if (retorno == false) {
+
+			System.out.println("Formato do CPF inválido, informe apenas números e 11 digitos.");
+		}
+		return retorno;
+	}
+	
+	public static boolean validarTelefone(String telefone) {
+		boolean retorno = telefone.matches("\\d{8}");
+
+		if (retorno == false) {
+
+			System.out.println("Formato do telefone inválido, informe apenas números e 8 digitos.");
+		}
+		return retorno;
+	}
+	
+	public static String formatarTelefone(String telefone){
+		if (validarTelefone(telefone)){
+			String ddd = "81";
+			String c1 = telefone.substring(0, 4);
+			String c2 = telefone.substring(4, 8);
+			telefone = String.format("(%s) %s-%s", ddd, c1, c2);
+			return telefone;
+		}
+		else{
+			return null;
 		}
 	}
+	
+	public static String formatarCPF(String cpf){
+		if (validarCpf(cpf)){
+		String c1 = cpf.substring(0, 3);
+		String c2 = cpf.substring(3, 6);
+		String c3 = cpf.substring(6, 9);
+		String c4 = cpf.substring(9, 11);
+		cpf = String.format("%s.%s.%s-%s", c1, c2, c3, c4);
+		return cpf;
+	}
+		else{
+			return null;
+		}
+	}
+	
 }
