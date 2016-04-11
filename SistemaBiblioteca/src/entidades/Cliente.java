@@ -6,19 +6,19 @@ public class Cliente implements Serializable {
 	private String nome;
 	private char sexo;
 	private int idade;
-	private String endereco;
-	private int telefone;
+	private String telefone;
 	private String cpf;
-	private String email;
 	
-	public Cliente ( String nome, char sexo, int idade, String endereco, int telefone, String cpf, String email){
+	public Cliente(){
+		
+	}
+	
+	public Cliente (String nome, char sexo, int idade, String telefone, String cpf){
 		this.setNome(nome);
 		this.setSexo(sexo);
 		this.setIdade(idade);
-		this.setEndereco(endereco);
 		this.setTelefone(telefone);
 		this.setCpf(cpf);
-		this.setEmail(email);
 	}
 
 	
@@ -46,19 +46,12 @@ public class Cliente implements Serializable {
 		this.idade = idade;
 	}
 
-	public String getEndereco() {
-		return endereco;
-	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-
-	public int getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(int telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	
@@ -69,13 +62,9 @@ public class Cliente implements Serializable {
 	public void setCpf(String cpf2) {
 		this.cpf = cpf2;
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	
+	public String toString(){
+		return "\nNome: " + getNome() + "\nSexo: " + getSexo() + "\nIdade: " + getIdade() + "\nTelefone: " + getTelefone() + "\nCpf: " + getCpf() + "\n";
+	}
+
 }

@@ -94,7 +94,7 @@ public class Livro implements Serializable{
 	}
 	
 	public String toString(){
-		return "Título: " + titulo + ", " + numeroPaginas + "p, " + "exemplares: " +  exemplares + ", " + autor;
+		return getTitulo() + ", " + getNumeroPaginas() + "p, " +  getExemplares() + ", " + getAutor();
 	}
 
 }
