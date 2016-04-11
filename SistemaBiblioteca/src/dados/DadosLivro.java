@@ -15,8 +15,7 @@ public class DadosLivro {
 	public static Object buscar(String caminho) {
 	   	 
         Object objeto = null;
-   	 	String dir = "C:/Users/Weydson/Desktop/workplace/SistemaBiblioteca/Livros/"+caminho;
- 
+   	 	String dir = "Livros\\"+caminho;
        
         try {
                FileInputStream restFile = new FileInputStream(dir);
@@ -39,20 +38,18 @@ public class DadosLivro {
 		
 		Livro livro = new Livro();
 		livro = (Livro) buscar(caminho);
-		String titulo;
-		int numeroPaginas;
-		int exemplares;
-		Autor autor;
+
+		String titulo = livro.getTitulo();
+		int numeroPaginas = livro.getNumeroPaginas();
+		int exemplares = livro.getExemplares();
+		Autor autor = livro.getAutor();
 		
+		String novoTitulo = titulo;
+		int novoNumeroPaginas = numeroPaginas;
+		int novoExemplares = exemplares;
+		Autor novoAutor = autor;
 		
-		titulo = livro.getTitulo();
-		numeroPaginas = livro.getNumeroPaginas();
-		exemplares = livro.getExemplares();
-		autor = livro.getAutor();
-		
-		String novoTitulo;
-		int novoNumeroPaginas, novoExemplares;
-		Autor novoAutor;
+		boolean operacao = true;
 		
 		buscar(caminho);
 		Scanner sc = new Scanner(System.in);
@@ -73,48 +70,46 @@ public class DadosLivro {
 			
 		if (opcao.equalsIgnoreCase("1")){
 			System.out.println("[1] Título ");
-			livro.getTitulo();
-			titulo = sc.nextLine();
+			novoTitulo = sc.next();
+			
+			System.out.println("Você mudou o título do livro de [" + titulo + "] para [" + novoTitulo + "].\n");
 		}
 		
 
 		else if (opcao.equalsIgnoreCase("2")){
 			System.out.println("[2] úmero de Páginas ");
-			numeroPaginas = sc.nextInt();
+			novoNumeroPaginas = sc.nextInt();
 			//validar só números, evitar dar excessão
 		}
 
 		else if (opcao.equalsIgnoreCase("3")){
 			System.out.println("[3] Quantidade de exemplares");
-			exemplares = sc.nextInt();
+			novoExemplares = sc.nextInt();
 			//same
 		}
 
 		else if (opcao.equalsIgnoreCase("4")){
 			System.out.println("[4] Autor do livro");
 			String autorNome = sc.next();
-			autor = new Autor(autorNome);
+			novoAutor = new Autor(autorNome);
 		}
 		
 		else {
 			System.out.println("Opções válidas de [1] a [4], se quiser voltar digite \"Sair\"");
 		}
-
 		
-		System.out.println("Digite as novas informações do livro ");
-		
-		livro = new Livro(titulo, numeroPaginas, exemplares, autor);
+		livro = new Livro(novoTitulo, novoNumeroPaginas, novoExemplares, novoAutor);
 		System.out.println("Os dados do livro ficaram: ");
-		System.out.println("Título: " + titulo + "\nNúmero de páginas: " +numeroPaginas + "\nExemplares: " + exemplares + "Autor: " +autor);
+		System.out.println("Título: " + titulo + "\nNúmero de páginas: " + numeroPaginas + "\nExemplares: " + exemplares + "\nAutor: " + autor);
 
 		remover(caminho);
 		salvar(livro, titulo + ".txt");
 		}
-		while (true);
+		while (operacao);
 	}
     
     public static void salvar(Object objeto, String caminho) {
-   	 	String dir = "C:/Users/Weydson/Desktop/workplace/SistemaBiblioteca/Livros/"+caminho;
+   	 	String dir = "Livros\\"+caminho;
     	//arquivo
         try {
 
@@ -131,16 +126,17 @@ public class DadosLivro {
     				
  }
 	
-	public static void listarArquivos() {
+	public static void listarLivros() {
 		
-		    String dir = "C:/Users/Weydson/Desktop/workplace/SistemaBiblioteca/Livros/";
+		    String dir = "Livros\\";
 			File file = new File(dir);
 			File afile[] = file.listFiles();
 			int i = 0;
 			System.out.println("Número de livros no catalogo: " + afile.length ); 
+			System.out.println("\n|  Título, número de páginas, Exemplares, Autor  |\n");
 			for (int j = afile.length; i < j; i++) {
 				File arquivos = afile[i];
-				System.out.println(buscar(arquivos.getName()));
+				System.out.println("º " + buscar(arquivos.getName()) + "\n");
 				}
 			}
 	
@@ -149,7 +145,6 @@ public class DadosLivro {
 		
 	    String arquivo = "C:/Users/Weydson/Desktop/workplace/SistemaBiblioteca/Livros/" + livro;
 	    
-    		System.out.println(arquivo);
 		    File file = new File(arquivo);
     		if(file.delete()){
     			String MsgSaida;
@@ -161,7 +156,5 @@ public class DadosLivro {
     		}
     	   
     	}
-	
-
 	
 }
